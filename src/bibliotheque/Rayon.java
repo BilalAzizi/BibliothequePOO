@@ -59,4 +59,9 @@ public class Rayon {
         this.lex = lex;
     }
 
+    public void ajoutExemplaire(Exemplaire e) {
+        lex.add(e);
+        e.setRayon(this);
+    }
+
 }

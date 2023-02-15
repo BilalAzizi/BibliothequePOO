@@ -68,4 +68,9 @@ public class Auteur {
                 ", nationalite='" + nationalite + '\'' +
                 '}';
     }
+
+    public void ajoutOuvrage(Ouvrage ouvrage) {
+        louvrage.add(ouvrage);
+        ouvrage.getLauteurs().add(this);
+    }
 }
