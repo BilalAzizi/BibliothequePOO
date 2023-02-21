@@ -110,4 +110,17 @@ public abstract class Ouvrage {
                 ", genre='" + genre + '\'' +
                 '}';
     }
+
+    public void listerExemplaire(){
+        //TODO
+    }
+
+    public void listerExemplaire(boolean enLocation){
+        //TODO
+    }
+
+    protected void amendeRetard(int njours)
+    {
+        //TODO
+    }
 }

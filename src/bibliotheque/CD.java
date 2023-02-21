@@ -60,4 +60,8 @@ public class CD extends Ouvrage{
                 ", dureeTotale='" + dureeTotale + '\'' +
                 "} " + super.toString();
     }
+
+    public void amendeRetard(int njours){
+        //TODO
+    }
 }

@@ -119,4 +119,12 @@ public class Lecteur {
         lloc.add(location);
         location.getExemplaire().getLloc().add(location);
     }
+
+    public void listerExemplaireEnLocation(){
+        //TODO
+    }
+
+    public void listerExemplaireLoues(){
+        //TODO
+    }
 }

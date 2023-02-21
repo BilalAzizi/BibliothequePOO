@@ -74,4 +74,12 @@ public class Location {
                 ", exemplaire=" + exemplaire +
                 '}';
     }
+
+    public void calculerAmende(){
+        //TODO
+    }
+
+    public void enregistrerRetour(){
+        //TODO
+    }
 }
