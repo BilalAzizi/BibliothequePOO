@@ -15,6 +15,12 @@ public class Gestion {
     private static List<Rayon> lrayon= new ArrayList<>();
     private static List<Location> elloc = new ArrayList<>();
     private static List<Auteur> auteurs = new ArrayList<>();
+    private static List<Lecteur> lesLecteurs = new ArrayList<>(); //ne pas oublier le static sinon on peut pas communiquer
+    private static List<Rayon> lesRayons = new ArrayList<>();
+    private static List<Exemplaire> lesExemplaire = new ArrayList<>();
+
+
+
 
     public static void populate(){
         Auteur a = new Auteur("Verne","Jules","France");
@@ -96,52 +102,119 @@ public class Gestion {
         Scanner sc = new Scanner(System.in);
         int choix;
 
-        do{
-            System.out.println("1. Auteurs\n 2. Ouvrage");
-            choix=sc.nextInt();
-            switch (choix){
-                case 1: gestAuteurs();
-                        break;
-                case 2: gestOuvrage();
-                        break;
+        do {
+            System.out.println("1.Auteurs\n2.Ouvrages\n3.Lecteur\n4.Rayon\n5.Exemplaire\n6.Louer\n7.Rendre\n8.Fin");
+            System.out.print("Votre choix : ");
+            choix= sc.nextInt();
+            switch(choix) {
+                case 1 :
+                    System.out.println("Ajout d'un ouvrage");
+                    gestAuteurs();
+                    break;
+                case 2 :
+                    System.out.println("Ajout d'un auteur");
+                    gestOuvrage();
+                    break;
+                case 3 :
+                    System.out.println("Ajout d'un lecteur");
+                    gestLecteurs();
+                    break;
+                case 4 :
+                    System.out.println("Ajout d'un rayon");
+                    gestRayons();
+                    break;
+                case 5 :gestExemplaires();
+                    break;
+                case 6 :louer();
+                    break;
+                case 7 :rendre();
+                    break;
+                case 8 : System.out.println("Au revoir et à bientôt !");
+                    break;
             }
         }while(choix != 8);
     }
 
     private static void gestOuvrage(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ajout d'un nouvel ouvrage");
-        System.out.println("Entrez le titre de l'ouvrage :");
+        System.out.println("Entrez le titre de l'ouvrage: ");
         String titre = sc.nextLine();
-        System.out.println("Entrez l'âge minimum requis pour ce livre :");
+        System.out.println("Entrez l'âge minimum requis pour ce livre: ");
         int ageMin = sc.nextInt();
         sc.nextLine();
-        System.out.println("Entrez la date de parution :");
+        System.out.println("Entrez la date de parution: ");
         String dateParution = sc.nextLine();
-        System.out.println("Entrez le prix de location :");
+        System.out.println("Entrez le prix de location: ");
         double prixLocation = sc.nextDouble();
         sc.nextLine();
-        System.out.println("Entrez la langue de l'ouvrage :");
+        System.out.println("Entrez la langue de l'ouvrage: ");
         String langue = sc.nextLine();
-        System.out.println("Entrez le genre de l'ouvrage :");
+        System.out.println("Entrez le genre de l'ouvrage: ");
         String genre = sc.nextLine();
 
-        //n'arrive pas a faire la suite
+        //je n'arrive pas a faire la suite a voir ce qu'il manque
         //TODO
     }
 
     private static void gestAuteurs(){
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ajout d'un auteur");
-        System.out.print("Nom : ");
+        System.out.print("Nom: ");
         String nom = sc.nextLine();
-        System.out.print("Prénom : ");
+        System.out.print("Prénom: ");
         String prenom = sc.nextLine();
-        System.out.print("Nationalité : ");
+        System.out.print("Nationalité: ");
         String nationalite = sc.nextLine();
         Auteur auteur = new Auteur(nom, prenom, nationalite);
         auteurs.add(auteur);
-        System.out.println("Auteur ajouté");
     }
+
+    private static void gestLecteurs() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez le numéro d'un lecteur: ");
+        int numLecteur = sc.nextInt();
+        System.out.println("Entrez le nom du lecteur: ");
+        String nom = sc.next();
+        System.out.println("Entrez le prénom du lecteur: ");
+        String prenom = sc.next();
+        System.out.println("Entrez la date: ");
+        LocalDate dn = LocalDate.parse(sc.next());
+        System.out.println("Entrez l'adresse du lecteur: ");
+        String adresse = sc.next();
+        System.out.println("Entrez le mail du lecteur: ");
+        String mail = sc.next();
+        System.out.println("Entrez le numéro de téléphone du lecteur: ");
+        String tel = sc.next();
+        lesLecteurs.add(new Lecteur(numLecteur, nom, prenom, dn, adresse, mail, tel));
+    }
+
+    private static void gestRayons(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez le code du rayon: ");
+        String codeRayon = sc.next();
+        System.out.println("Entrez le genre du rayon: ");
+        String genre = sc.next();
+        lesRayons.add(new Rayon(codeRayon, genre));
+    }
+
+    private static void gestExemplaires(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez le matricule de l'exemplaire: ");
+        String matricule = sc.next();
+        System.out.println("Entrez la description de l'état de l'exemplaire: ");
+        String descriptionEtat = sc.next();
+        lesExemplaire.add(new Exemplaire(matricule, descriptionEtat)); //a corriger
+
+    }
+
+    private static void louer(){
+        //essayer mais pas réussi a voir la méthode du professeur
+        //TODO
+    }
+
+    private static void rendre(){
+        //essayer mais pas réussi à voir la méthode du professeur
+        //TODO
+    }
+
+
 }

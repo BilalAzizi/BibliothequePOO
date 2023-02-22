@@ -111,16 +111,14 @@ public abstract class Ouvrage {
                 '}';
     }
 
-    public void listerExemplaire(){
+    public void listerExemplaires(){
         //TODO
     }
 
-    public void listerExemplaire(boolean enLocation){
+    public boolean listerExemplaire(boolean enLocation){
         //TODO
+        return false;
     }
 
-    protected void amendeRetard(int njours)
-    {
-        //TODO
-    }
+    public abstract double amendeRetard(int njours);
 }

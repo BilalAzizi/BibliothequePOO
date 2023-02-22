@@ -7,7 +7,8 @@ import java.util.Objects;
 
 public class Lecteur {
     private int numlecteur;
-    private  String nom,prenom;
+    private  String nom;
+    private String prenom;
     private LocalDate dn;
     private String adresse;
     private String mail;
@@ -23,6 +24,9 @@ public class Lecteur {
         this.adresse = adresse;
         this.mail = mail;
         this.tel = tel;
+    }
+
+    public Lecteur(String nom, String prenom, String adresse, String cp, String ville, int age) {
     }
 
     public int getNumlecteur() {

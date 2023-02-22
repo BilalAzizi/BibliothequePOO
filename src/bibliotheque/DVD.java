@@ -83,7 +83,8 @@ public class DVD extends Ouvrage{
                 "} " + super.toString();
     }
 
-    public void amendeRetard(int njours){
+    public double amendeRetard(int njours){
         //TODO
+        return 0;
     }
 }

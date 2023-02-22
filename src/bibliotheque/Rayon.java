@@ -64,7 +64,7 @@ public class Rayon {
         e.setRayon(this);
     }
 
-    public void listerExemplaire(){
+    public void listerExemplaires(){
         //TODO
     }
 }

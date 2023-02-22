@@ -61,7 +61,8 @@ public class CD extends Ouvrage{
                 "} " + super.toString();
     }
 
-    public void amendeRetard(int njours){
+    public double amendeRetard(int njours){
         //TODO
+        return 0;
     }
 }

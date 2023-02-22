@@ -79,11 +79,11 @@ public class Auteur {
         //TODO
     }
 
-    public void listerOuvrages(Ouvrage, Livre){
+    public void listerOuvrages(Ouvrage ouvrage, Livre livre){
         //TODO
     }
 
-    public void listerOuvrages(genre){
+    public void listerOuvrage(Ouvrage genre){
         //TODO
     }
 }
