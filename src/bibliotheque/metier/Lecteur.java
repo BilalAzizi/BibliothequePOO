@@ -1,4 +1,4 @@
-package bibliotheque;
+package bibliotheque.metier;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,8 +7,7 @@ import java.util.Objects;
 
 public class Lecteur {
     private int numlecteur;
-    private  String nom;
-    private String prenom;
+    private  String nom,prenom;
     private LocalDate dn;
     private String adresse;
     private String mail;
@@ -24,9 +23,6 @@ public class Lecteur {
         this.adresse = adresse;
         this.mail = mail;
         this.tel = tel;
-    }
-
-    public Lecteur(String nom, String prenom, String adresse, String cp, String ville, int age) {
     }
 
     public int getNumlecteur() {
@@ -119,16 +115,13 @@ public class Lecteur {
         return Objects.hash(numlecteur);
     }
 
-    public void ajoutLocation(Location location) {
-        lloc.add(location);
-        location.getExemplaire().getLloc().add(location);
+    public List<Exemplaire> listerExemplairesEnLocation(){
+        //TODO lister exemplaires en location lecteur
+        return null;
     }
 
-    public void listerExemplaireEnLocation(){
-        //TODO
-    }
-
-    public void listerExemplaireLoues(){
-        //TODO
+    public List<Exemplaire> listerExemplairesEnLoues(){
+        //TODO lister exemplaires loues lecteur
+        return null;
     }
 }

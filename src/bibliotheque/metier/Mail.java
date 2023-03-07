@@ -1,4 +1,4 @@
-package bibliotheque;
+package bibliotheque.metier;
 
 public class Mail {
     private String objet;

@@ -1,4 +1,4 @@
-package bibliotheque;
+package bibliotheque.metier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,9 @@ public class Exemplaire {
     }
 
     public void setOuvrage(Ouvrage ouvrage) {
+        if(this.ouvrage!=null) this.ouvrage.getLex().remove(this);
         this.ouvrage = ouvrage;
+        this.ouvrage.getLex().add(this);
     }
 
     public Rayon getRayon() {
@@ -88,39 +90,43 @@ public class Exemplaire {
     }
 
     public void modifierEtat(String etat){
-        //TODO
+        //TODO modifier etat exemplaire
     }
 
-    public void lecteurActuel(){
-        //TODO
+    public Lecteur lecteurActuel(){
+        //TODO lecteur actuel exemplaire
+        return null;
+    }
+    public List<Lecteur> lecteurs(){
+        //lecteurs exemplaire
+        return null;
     }
 
-    public void lecteurs(){
-        //TODO
+    public void envoiMailLecteurActuel(Mail mail){
+        //TODO envoi mail lecteur exemplaire
     }
 
-    public void enVoilMailLecteurActuel(Mail mail){
-        //TODO
-    }
-
-    public void envoiMailLecteur(Mail mail){
-        //TODO
+    //seul endroit où on peut mettre println
+    public void envoiMailLecteurs(Mail mail){
+        //TODO envoi mail lecteurs exemplaire
     }
 
     public boolean enRetard(){
-        //TODO
+        //TODO enretard exeplaire
         return false;
     }
 
     public int joursRetard(){
-        //TODO
+        //TODO jours retard exemplaire
         return 0;
     }
 
+
     public boolean enLocation(){
-        //TODO
+        //TODO en location exemplaires
         return false;
     }
+
 
 
 }
