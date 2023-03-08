@@ -111,6 +111,7 @@ public class Gestion {
                     gestLecteurs();
                     break;
                 case 6:
+                    //a modifier
                     gestLocations();
                     break;
                 default:
@@ -119,26 +120,29 @@ public class Gestion {
         } while (true);
     }
 
-    private void gestLocations() {
-//TODO lister exemplaires,lister lecteurs,créer la location avec le constructeur à deux paramètres(loueur,exemplaire)
+    private void gestLocations(Lecteur loueur, Exemplaire exemplaire) {
         System.out.println("Liste des exemplaires: ");
 
-        //Pourquoi i ne fonctionne pas? pourtant je fais pareil que dans gestExemplaire;
-        for (int i = 0, i<lex.size(); i++){
+        for (int i = 0; i<lex.size(); i++){
             //on va parcourir et afficher
-            System.out.println(i + 1) + ")" + lex.get(i));
+            System.out.println((i + 1 + ")" + lex.get(i)));
         }
 
-        for (int i = 0, i<llect.size(); i++){
-            System.out.println(i + 1) + ")" + llect.get(i));
+        for (int i = 0; i<llect.size(); i++){
+            System.out.println((i + 1 + ")" + llect.get(i)));
         }
 
         int choix;
-        System.out.println("Choix de l'exemplaire a louer");
+        System.out.println("Exemplaire: ");
+        int choixex = sc.nextInt();
+        exemplaire = lex.get(choixex -1);
 
-        //TODO corriger d'abord l'affichage des location
+        System.out.println("Lecteur");
+        int choixlec = sc.nextInt();
+        loueur = llect.get(choixlec -1);
 
-
+        Location location = new Location(loueur, exemplaire);
+        lloc.add(location); //ajout de location
     }
 
     private void gestLecteurs() {
