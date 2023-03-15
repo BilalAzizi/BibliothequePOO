@@ -65,8 +65,13 @@ public class Livre extends Ouvrage{
 
     @Override
     public double amendeRetard(int njours) {
-        //TODO amendeRetard livre
-        return 0;
+
+        return njours*0.25;
+    }
+
+    @Override
+    public int njlocmax() {
+        return 15;
     }
 
     @Override
@@ -76,6 +81,6 @@ public class Livre extends Ouvrage{
                 ", nbrePages=" + nbrePages +
                 ", tl=" + tl +
                 ", resume='" + resume + '\'' +
-                "} " + super.toString();
+                "} " ;
     }
 }
