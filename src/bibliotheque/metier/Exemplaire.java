@@ -106,7 +106,7 @@ public class Exemplaire {
     public List<Lecteur> lecteurs(){
         List<Lecteur> ll = new ArrayList<>();
         for(Location l : lloc){
-            if(ll.contains(l)) continue; //par la suite utiliser set
+            if(ll.contains(l.getLoueur())) continue; //par la suite utiliser set
             ll.add(l.getLoueur());
         }
         return null;
@@ -150,5 +150,7 @@ public class Exemplaire {
         if(l.getDateRestitution()==null) return true;
         return false;
     }
+
+
 
 }

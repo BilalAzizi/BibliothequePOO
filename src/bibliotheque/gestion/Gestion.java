@@ -100,38 +100,14 @@ public class Gestion {
     }
 
     private void gestRestitution() {
-        //aide d'un formateur(cours perso)
-
-        List<Exemplaire> exemplaireEnLoc = new ArrayList<>();
-
-        System.out.println("Liste des exemplaires en location :");
-        for (int i = 0; i < exemplaireEnLoc.size(); i++) {
-            System.out.println((i + 1) + ". " + exemplaireEnLoc.get(i));
-        }
-
-        System.out.println("Exemplaire a restituer : ");
-        Scanner sc = new Scanner (System.in);
-        int choix = sc.nextInt();
-
-        if (choix > 0 && choix <= exemplaireEnLoc.size()){
-            Exemplaire exemplaireChoisi = exemplaireEnLoc.get(choix - 1);
-            System.out.println("L'exemplaire " + exemplaireChoisi.getMatricule() + " a été restitué.");
-        } else {
-            System.out.println("Erreur. Veuillez réessayer.");
-        }
-
+        //TODO lister exemplaires en location , choisir l'un d'entre eux, enregistrer sa restitution et éventuellement changer état
     }
 
-    private void gestLocations(List<Ouvrage> ouv) {
+    private void gestLocations() {
         int choix;
-        List<Exemplaire> exemplairesLibres = new ArrayList<>();
-        for (Ouvrage ouvrage : ouv) {
-            exemplairesLibres.addAll(ouvrage.listerExemplaires(false));
-        }
-        //TODO ne lister que les exemplaires libres et les trier par matricule
         //TODO ne lister que les exemplaires libres et les trier par matricule
         choix = Utilitaire.choixListe(lex);
-        if(lex.get(choix).enLocation()){
+        if(lex.get(choix-1).enLocation()){
             System.out.println("exemplaire en location");
             return;
         }
@@ -230,7 +206,8 @@ public class Gestion {
                             System.out.println("code : ");
                             long code= sc.nextLong();
                             System.out.println("nombre de plages :");
-                            byte nbrePlages= sc.nextByte();
+                            byte nbrePlages= sc.nextByte();sc.skip("\n");
+                            System.out.println("durée en H M S : ");
                             LocalTime dureeTotale = Utilitaire.lecTime();
                             o=new CD(titre,ageMin,dp,ploc,langue,genre,code,nbrePlages,dureeTotale);
                             ;break;
@@ -245,7 +222,7 @@ public class Gestion {
                             do{
                                 choix=Utilitaire.choixListe(langues);
                                 if(choix==langues.size())break;
-                                ((DVD)o).getAutresLangues().add(langues.get(choix-1)); //TODO vérifier unicité ou utiliser set et pas de doublon avec langue d'origine
+                                ((DVD)o).getAutresLangues().add(langues.get(choix-1));//TODO vérifier unicité ou utiliser set et pas de doublon avec langue d'origine
                             }while(true);
                            System.out.println("sous-titres");
                             do{
