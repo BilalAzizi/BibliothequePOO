@@ -170,7 +170,13 @@ public class Gestion {
         Rayon r = new Rayon(code,genre);
         System.out.println("rayon créé");
 
-        //TODO attribuer exemplaire, les exemplaires sont triés par ordre de titre de l'ouvrage , empêcher doublons sur l'exemplaire
+        List<Exemplaire>exemplaires = new ArrayList<>();
+        for(Exemplaire ex : exemplaires){
+            if(ex.getRayon() == null){
+                ex.setRayon(r);
+            }
+        }
+
     }
 
     private void gestExemplaires() {
