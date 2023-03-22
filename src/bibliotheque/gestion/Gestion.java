@@ -5,10 +5,7 @@ import bibliotheque.utilitaires.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Gestion {
     Scanner sc = new Scanner(System.in);
@@ -288,6 +285,10 @@ public class Gestion {
         laut.add(a);
         System.out.println("écrivain créé");
         //TODO attribuer ouvrages , les ouvrages sont triés par ordre de titre
+           List<Ouvrage> ouvrages = new ArrayList<>(louv);
+           ouvrages.sort(Comparator.comparing(Ouvrage::getTitre));
+           int i = 1;
+           //par réussi
     }
 
     public static void main(String[] args) {
