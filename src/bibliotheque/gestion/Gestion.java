@@ -100,7 +100,26 @@ public class Gestion {
     }
 
     private void gestRestitution() {
-        //TODO lister exemplaires en location , choisir l'un d'entre eux, enregistrer sa restitution et éventuellement changer état
+        //listons les exemplaires
+        List<Exemplaire> exemplairesEnLocation = new ArrayList<>();
+        for(Location location : lloc){
+            exemplairesEnLocation.add(location.getExemplaire());
+        }
+        if(exemplairesEnLocation.isEmpty())
+        {
+            System.out.println("Pas d'exemplaire en location");
+        }
+
+        //mtn affichons
+        for (int i = 0; i < exemplairesEnLocation.size(); i++){
+            System.out.println(exemplairesEnLocation.get(i));
+        }
+
+        //passons au choix mtn
+        int choix = Utilitaire.choixListe(exemplairesEnLocation);
+        Exemplaire exemplaire = exemplairesEnLocation.get(choix - 1); //voir utilitaires Utilitaire
+
+        //j'arrive pas a faire la suite chef
     }
 
     private void gestLocations() {
