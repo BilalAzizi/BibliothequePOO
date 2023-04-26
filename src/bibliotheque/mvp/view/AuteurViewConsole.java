@@ -39,18 +39,22 @@ public class AuteurViewConsole implements AuteurViewInterface{
         do {
             int ch = Utilitaire.choixListe(options);
 
-            switch (ch) {
-                case 1:
-                    ajouter();
-                    break;
-                case 2:
-                    retirer();
-                    break;
-                case 3:
-                    modifier();
-                    break;
-                case 4:
-                    System.exit(0);
+            try {
+                switch (ch) {
+                    case 1:
+                        ajouter();
+                        break;
+                    case 2:
+                        retirer();
+                        break;
+                    case 3:
+                        modifier();
+                        break;
+                    case 4:
+                        System.exit(0);
+                }
+            } catch (Exception e) {
+                System.out.println("Une erreur est survenue: " + e.getMessage());
             }
         } while (true);
     }
