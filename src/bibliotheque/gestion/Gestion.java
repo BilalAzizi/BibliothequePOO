@@ -79,22 +79,42 @@ public class Gestion {
     }
 
     private void menu() {
-        List options = new ArrayList<>(Arrays.asList("auteurs","ouvrages","exemplaires","rayons","lecteurs","locations","restitution","fin"));
-      do{
-        int choix = Utilitaire.choixListe(options);
+        List options = new ArrayList<>(Arrays.asList("auteurs", "ouvrages", "exemplaires", "rayons", "lecteurs", "locations", "restitution", "fin"));
+        do {
+            int choix = Utilitaire.choixListe(options);
 
-            switch (choix){
-                case 1 :gestAuteurs(); break;
-                case 2 : gestOuvrages();break;
-                case 3 : gestExemplaires();break;
-                case 4 : gestRayons();break;
-                case 5 : gestLecteurs();break;
-                case 6 : gestLocations();break;
-                case 7 : gestRestitution();break;
-                default:System.exit(0);
+            try {
+                switch (choix) {
+                    case 1:
+                        gestAuteurs();
+                        break;
+                    case 2:
+                        gestOuvrages();
+                        break;
+                    case 3:
+                        gestExemplaires();
+                        break;
+                    case 4:
+                        gestRayons();
+                        break;
+                    case 5:
+                        gestLecteurs();
+                        break;
+                    case 6:
+                        gestLocations();
+                        break;
+                    case 7:
+                        gestRestitution();
+                        break;
+                    default:
+                        System.exit(0);
+                }
+            } catch (Exception e) {
+                System.out.println("Une erreur est survenue: " + e.getMessage());
             }
-        }  while (true);
+        } while (true);
     }
+
 
     private void gestRestitution() {
         //listons les exemplaires
@@ -134,8 +154,10 @@ public class Gestion {
     }
 
     private void gestLecteurs() {
+        int i;
         System.out.println("numéro");
         int num=sc.nextInt();
+
         sc.skip("\n");
         System.out.println("nom ");
         String nom=sc.nextLine();
