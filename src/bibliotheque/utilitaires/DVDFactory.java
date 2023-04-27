@@ -9,13 +9,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static bibliotheque.utilitaires.Utilitaire.*;
 public class DVDFactory extends OuvrageFactory{
     public Ouvrage addDetail(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre){
         System.out.println("code : ");
-        long code= sc.nextLong();
-        LocalTime dureeTotale=Utilitaire.lecTime();
-        byte nbreBonus= sc.nextByte();sc.skip("\n");
-        DVD dvd =new DVD(titre,ageMin,dateParution,prixLocation,langue,genre,code,dureeTotale,nbreBonus);
+        long code= lireLong();
+        LocalTime dureeTotale=lecTime();
+        byte nbreBonus= (byte)lireInt();
+        DVD dvd = null;
+        try {
+            dvd = new DVD(titre,ageMin,dateParution,prixLocation,langue,genre,code,dureeTotale,nbreBonus);
+        } catch (Exception e) {
+            System.out.println("erreur :"+e);
+        }
         System.out.println("autres langues");
         List<String> langues = new ArrayList<>(Arrays.asList("anglais","français","italien","allemand","fin"));
         int choix;

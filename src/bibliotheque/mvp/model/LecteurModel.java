@@ -1,34 +1,28 @@
 package bibliotheque.mvp.model;
 
+import bibliotheque.metier.Exemplaire;
 import bibliotheque.metier.Lecteur;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LecteurModel implements DAOLecteur {
-    private int numcli =0;
+public class LecteurModel extends AbstractModel<Lecteur> implements SpecialLecteur {
+    private int numLecteur = 0;
     private List<Lecteur> lecteurs = new ArrayList<>();
 
-    @Override
-    public Lecteur addLecteur(Lecteur lec) {
-        boolean present= lecteurs.contains(lec);
-        if(!present){
-            numcli++;
-            lec.setNumlecteur(numcli);
-            lecteurs.add(lec);
-            return lec;
-        }
-        else return null;
+    public Lecteur add(Lecteur nl){
+        Lecteur l = super.add(nl);
+        if(l!=null) l.setNumlecteur(++numLecteur);
+        return  l;
     }
 
     @Override
-    public boolean removeLecteur(Lecteur lec) {
-        return lecteurs.remove(lec);
+    public List<Exemplaire> exemplairesEnLocation(Lecteur l) {
+        return l.listerExemplairesEnLocation();
     }
 
     @Override
-    public List<Lecteur> getLecteurs() {
-        return new ArrayList<>(lecteurs);
+    public List<Exemplaire> exemplairesLoues(Lecteur l) {
+        return new ArrayList<>(l.listerExemplairesLoues());
     }
 }
-

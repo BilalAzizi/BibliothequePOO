@@ -1,86 +1,42 @@
 package bibliotheque.mvp.view;
 
 import bibliotheque.metier.Auteur;
-import bibliotheque.mvp.presenter.AuteurPresenter;
-import bibliotheque.utilitaires.Utilitaire;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+public class AuteurViewConsole extends AbstractViewConsole<Auteur>{
+    @Override
+    protected void rechercher() {
 
-public class AuteurViewConsole implements AuteurViewInterface{
-    private AuteurPresenter presenter;
-    private List<Auteur> lauteur;
-    private Scanner sc = new Scanner(System.in);
-
-    public AuteurViewConsole() {
     }
 
     @Override
-    public void setPresenter(AuteurPresenter presenter) {
-        this.presenter = presenter;
+    protected void modifier() {
+
     }
 
     @Override
-    public void setListDatas(List<Auteur> auteurs) {
-        this.lauteur = auteurs;
-        Utilitaire.affListe((lauteur));
-        menu();
-    }
-
-    @Override
-    public void affMsg(String msg) {
-        System.out.println("information: "+msg);
-    }
-
-    public void menu() {
-        List options = new ArrayList<>(Arrays.asList("ajouter", "retirer", "modifier", "fin"));
+    protected void ajouter() {
+        Auteur a=null;
         do {
-            int ch = Utilitaire.choixListe(options);
-
             try {
-                switch (ch) {
-                    case 1:
-                        ajouter();
-                        break;
-                    case 2:
-                        retirer();
-                        break;
-                    case 3:
-                        modifier();
-                        break;
-                    case 4:
-                        System.exit(0);
-                }
+                System.out.println("nom ");
+                String nom = sc.nextLine();
+                System.out.println("prénom ");
+                String prenom = sc.nextLine();
+                System.out.println("nationalité");
+                String nat = sc.nextLine();
+                a = new Auteur(nom, prenom, nat);
+                break;
             } catch (Exception e) {
-                System.out.println("Une erreur est survenue: " + e.getMessage());
+                System.out.println("une erreur est survenue : "+e.getMessage());
             }
-        } while (true);
+        }while(true);
+        presenter.add(a);
+
+        //TODO attribuer ouvrages , les ouvrages sont triés par ordre de titre
     }
 
-    private void modifier() {
-        //TODO choisir elt et demander les nouvelles valeurs puis appeler méthode maj(lecteur) (à développer) du presenter
-        int choix = Utilitaire.choixElt(lauteur);
-        Auteur auteur = lauteur.get(choix-1);
-        presenter.maj(auteur);
-    }
+    @Override
+    protected void special() {
 
-    private void retirer() {
-        int choix = Utilitaire.choixElt(lauteur);
-        Auteur auteur = lauteur.get(choix-1);
-        presenter.removeAuteur(auteur);
-    }
-
-
-    private void ajouter() {
-        System.out.println("nom ");
-        String nom = sc.nextLine();
-        System.out.println("prénom ");
-        String prenom = sc.nextLine();
-        System.out.println("nationalité ");
-        String nationalite = sc.nextLine();
-        Auteur aut = new Auteur (nom, prenom, nationalite);
-        presenter.addAuteur(aut);
     }
 }
