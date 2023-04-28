@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SpecialExemplaire {
   public void modifierEtat(Exemplaire ex,String etat);
-  public Lecteur LecteurActuel(Exemplaire ex);
+  public Lecteur lecteurActuel(Exemplaire ex);
 
   public List<Lecteur> lecteurs(Exemplaire ex);
 

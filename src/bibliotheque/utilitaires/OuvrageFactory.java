@@ -6,8 +6,7 @@ import bibliotheque.metier.Ouvrage;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import static bibliotheque.utilitaires.Utilitaire.lireDouble;
-import static bibliotheque.utilitaires.Utilitaire.lireInt;
+import static bibliotheque.utilitaires.Utilitaire.*;
 
 public  abstract class OuvrageFactory {
    protected Scanner sc= new Scanner(System.in);
@@ -18,7 +17,7 @@ public  abstract class OuvrageFactory {
        System.out.println("age minimum");
        int ageMin= lireInt();
        System.out.println("date de parution");
-       LocalDate dp= Utilitaire.lecDate();
+       LocalDate dp= lecDate();
        System.out.println("prix de location");
        double ploc = lireDouble();
        System.out.println("langue");

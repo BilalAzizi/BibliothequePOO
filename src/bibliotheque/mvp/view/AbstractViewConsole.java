@@ -55,6 +55,7 @@
                         modifier();
                         break;
                     case 5:
+                        affListe(ldatas);
                         special();
                         break;
                     case 6:
@@ -81,6 +82,6 @@
 
         protected abstract  void ajouter();
        protected abstract void special();
-        }
+    }
 
 

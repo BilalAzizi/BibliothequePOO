@@ -1,5 +1,7 @@
 package bibliotheque.metier;
 
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +129,6 @@ public abstract class Ouvrage {
         a.getLouvrage().remove(this);
     }
     public void addExemplaire(Exemplaire e){
-        lex.add(e);
         e.setOuvrage(this);
     }
 

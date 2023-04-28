@@ -6,7 +6,7 @@ import bibliotheque.metier.Rayon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RayonModelV2 implements DAO<Rayon>, SpecialRayon {
+public class RayonModelV2 implements DAO<Rayon> ,SpecialRayon{
 
     private List<Rayon> ldatas = new ArrayList<>();
 
@@ -43,6 +43,6 @@ public class RayonModelV2 implements DAO<Rayon>, SpecialRayon {
 
     @Override
     public List<Exemplaire> listerExemplaires(Rayon r) {
-        return null;
+        return r.listerExemplaires();
     }
 }
