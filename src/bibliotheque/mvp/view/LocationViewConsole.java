@@ -15,7 +15,17 @@ import static bibliotheque.utilitaires.Utilitaire.*;
 public class LocationViewConsole extends AbstractViewConsole<Location> implements SpecialLocationViewConsole {
     @Override
     protected void rechercher() {
-
+        String recherche = saisie("Recherche : ");
+        try {
+            List<Location> resultatRecherche = presenter.rechercher(recherche);
+            if (resultatRecherche.isEmpty()) {
+                affMsg("Aucun résultat trouvé.");
+            } else {
+                affListe(resultatRecherche);
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la recherche : " + e.getMessage());
+        }
     }
 
     @Override
@@ -27,56 +37,72 @@ public class LocationViewConsole extends AbstractViewConsole<Location> implement
                 l.enregistrerRetour();
                 break;
             } catch (Exception e) {
-                System.out.println("erreur :" + e);
+                System.out.println("Erreur lors de l'enregistrement du retour : " + e.getMessage());
             }
-        }while(true);
+        } while (true);
         presenter.update(l);
-        ldatas=presenter.getAll();//rafraichissement
+        ldatas = presenter.getAll(); // Rafraîchissement
         affListe(ldatas);
     }
 
     @Override
     protected void ajouter() {
-        Lecteur l =((LocationPresenter)presenter).choixLecteur();
-        Exemplaire ex = ((LocationPresenter)presenter).choixExemplaire();
-        if(ex.enLocation()) {
-            affMsg("exemplaire en location");
-            return;
+        try {
+            Lecteur l = ((LocationPresenter) presenter).choixLecteur();
+            Exemplaire ex = ((LocationPresenter) presenter).choixExemplaire();
+            if (ex.enLocation()) {
+                affMsg("Exemplaire en location");
+                return;
+            }
+            Location loc = new Location(l, ex);
+            presenter.add(loc);
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'ajout de la location : " + e.getMessage());
         }
-        Location loc = new Location(l,ex);
-        presenter.add(loc);
     }
 
     @Override
     protected void special() {
-        int choix =  choixElt(ldatas);
-        Location l = ldatas.get(choix-1);
+        int choix = choixElt(ldatas);
+        Location l = ldatas.get(choix - 1);
 
-        List options = new ArrayList<>(Arrays.asList("calculer amende","enregistrer retour","fin"));
+        List<String> options = new ArrayList<>(Arrays.asList("calculer amende", "enregistrer retour", "fin"));
         do {
             int ch = choixListe(options);
 
             switch (ch) {
 
                 case 1:
-                    amende(l);
+                    try {
+                        amende(l);
+                    } catch (Exception e) {
+                        System.out.println("Erreur lors du calcul de l'amende : " + e.getMessage());
+                    }
                     break;
                 case 2:
                     retour(l);
                     break;
-                case 3 :return;
+                case 3:
+                    return;
             }
         } while (true);
     }
 
     @Override
     public void retour(Location l) {
-        if(l.getExemplaire().enLocation()) ((SpecialLocationPresenter)presenter).enregistrerRetour(l);
-        else affMsg("exemplaire pas en location");
+        try {
+            if (l.getExemplaire().enLocation()) {
+                ((SpecialLocationPresenter) presenter).enregistrerRetour(l);
+            } else {
+                affMsg("Exemplaire pas en location");
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'enregistrement du retour : " + e.getMessage());
+        }
     }
 
     @Override
     public void amende(Location l) {
-        ((SpecialLocationPresenter)presenter).calculerAmende(l);
+        ((SpecialLocationPresenter) presenter).calculerAmende(l);
     }
 }
