@@ -12,6 +12,7 @@ import static bibliotheque.utilitaires.Utilitaire.*;
 
 
 public class AuteurViewConsole extends AbstractViewConsole<Auteur> implements SpecialAuteurViewConsole {
+
     @Override
     protected void rechercher() {
         try {

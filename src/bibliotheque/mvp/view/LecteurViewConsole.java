@@ -5,9 +5,11 @@ import bibliotheque.metier.Lecteur;
 import bibliotheque.mvp.presenter.SpecialLecteurPresenter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static bibliotheque.utilitaires.Utilitaire.*;
-
 
 
 public class LecteurViewConsole extends AbstractViewConsole<Lecteur> implements SpecialLecteurViewConsole {
@@ -100,10 +102,10 @@ public class LecteurViewConsole extends AbstractViewConsole<Lecteur> implements 
     protected  void special() {
         int choix =  choixElt(ldatas);
         Lecteur lec = ldatas.get(choix-1);
-            do {
-                System.out.println("1.Exemplaire en location\n2.Exemplaires loués\n3.menu principal");
-                System.out.println("choix : ");
-                int ch = lireInt();
+
+        List options = new ArrayList<>(Arrays.asList("Exemplaire en location","Exemplaires loués","recherche par mail","fin"));
+        do {
+            int ch = choixListe(options);
                  switch (ch) {
                     case 1:
                         exemplairesLocation(lec);
@@ -111,7 +113,10 @@ public class LecteurViewConsole extends AbstractViewConsole<Lecteur> implements 
                     case 2:
                         exemplairesLoues(lec);
                         break;
-                    case 3: return;
+                     case 3:
+                         lecParMail();
+                         break;
+                    case 4: return;
                     default:
                         System.out.println("choix invalide recommencez ");
                 }
@@ -128,6 +133,14 @@ public class LecteurViewConsole extends AbstractViewConsole<Lecteur> implements 
     @Override
     public void exemplairesLocation(Lecteur lec) {
         ((SpecialLecteurPresenter)presenter).exemplairesEnLocation(lec);
+    }
+
+    @Override
+    public void lecParMail() {
+      //ajout pour forcer push
+        System.out.print("mail recherché : ");
+        String mail= sc.next();
+        ((SpecialLecteurPresenter)presenter).lecParMail(mail);
     }
 }
 

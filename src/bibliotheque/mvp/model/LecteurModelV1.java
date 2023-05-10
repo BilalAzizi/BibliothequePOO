@@ -74,4 +74,9 @@ public class LecteurModelV1 implements DAOLecteur,SpecialLecteur {
     public List<Exemplaire> exemplairesLoues(Lecteur l) {
         return new ArrayList<>(l.listerExemplairesLoues());
     }
+
+    @Override
+    public Lecteur lecParMail(String mail) {
+        return null;
+    }
 }
