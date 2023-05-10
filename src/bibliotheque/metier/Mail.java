@@ -5,10 +5,14 @@ public class Mail {
     private String message;
     private String dateEnvoi;
 
-    public Mail(String objet, String message, String dateEnvoi) {
+    private String destinataire;
+
+
+    public Mail(String objet, String message, String dateEnvoi, String destiniataire) {
         this.objet = objet;
         this.message = message;
         this.dateEnvoi = dateEnvoi;
+        this.destinataire = destinataire;
     }
 
     public String getObjet() {
@@ -35,6 +39,14 @@ public class Mail {
         this.dateEnvoi = dateEnvoi;
     }
 
+    public String getDestinataire() {
+        return destinataire;
+    }
+
+    public void setDestinataire(String destinataire) {
+        this.destinataire = destinataire;
+    }
+
     @Override
     public String toString() {
         return "Mail{" +
@@ -43,4 +55,6 @@ public class Mail {
                 ", dateEnvoi='" + dateEnvoi + '\'' +
                 '}';
     }
+
+
 }
